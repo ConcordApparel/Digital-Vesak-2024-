@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    background-image: url('Untitled-2.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+  }
+
+  h2 {
+    position: absolute;
+    right: 50px;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: right;
+    max-width: 40%;
+  }
+
+  h2 span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  h2 span:nth-child(odd) {
+    animation-delay: 0.5s;
+  }
+
+  h2 span:nth-child(even) {
+    animation-delay: 1s;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  p {
+    position: absolute;
+    right: 50px;
+    top: 70%;
+    transform: translateY(-50%);
+    animation: float 4s infinite;
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f0e9e8;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  button {
+    padding: 20px 20px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: black;
+    border: 2px solid #7a6bb0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  button:hover {
+    background-color: #7a6bb0;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  button:active {
+    background-color: #6a5ba0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  button::after {
+    content: '→';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: right 0.3s, opacity 0.3s;
+  }
+
+  button:hover::after {
+    right: 15px;
+    opacity: 1;
+  }
+
+  #playButton {
+    width: 40px;
+    height: 40px;
+    background-color: #121111;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+
+  #playButton:hover {
+    background-color: #ee5a42;
+  }
+
+  #playButton::before {
+    content: '▶';
+    font-size: 20px;
+  }
+
+  #playButton.pause::before {
+    content: '❚❚';
+    font-size: 20px;
+  }
+
+  .button-container {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+  }
+</style>
+</head>
+<body>
+
+<audio id="backgroundAudio" loop autoplay>
+  <source src="buddha-healing-flute-music-calming-relaxing-music-for-body-souls-161796.mp3" type="audio/mp3">
+</audio>
+
+<h2>
+  <span>ව</span><span>ේ</span><span>ස</span><span>ා</span><span>ක්</span><span> </span><span>උ</span><span>තු</span><span>මා</span><span>ගේ</span><span> </span><span>ප</span><span>ුණ</span><span>්‍</span><span>ය</span><span>ක</span><span>ා</span><span>ර</span><span>ී</span><span> </span><span>දි</span><span>න</span><span>යේ</span><span>දී</span><span>,</span><span> </span><span>ස</span><span>ි</span><span>ය</span><span>ලුම</span><span> </span><span>ප</span><span>ි</span><span>රි</span><span>සට</span><span> </span><span>ස</span><span>තුට</span><span>,</span><span> </span><span>ස</span><span>ා</span><span>මය</span><span> </span><span>හා</span><span> </span><span>ස</span><span>ෞ</span><span>භාග්‍</span><span>ය</span><span> </span><span>ප</span><span>ි</span><span>රී</span><span> </span><span>ප</span><span>ව</span><span>ති</span><span>යී</span><span> </span><span>කියා</span><span> </span><span>ප්‍</span><span>රාර්ථනා</span><span> </span><span>කරනවා</span><span>.</span><span> </span><span>බ</span><span>ුදු</span><span> </span><span>දහ</span><span>මෙන්</span><span> </span><span>ලැබෙන</span><span> </span><span>ආ</span><span>ශීර්</span><span>වාද</span><span> </span><span>සෑම</span><span> </span><span>දිනයක්ම</span><span> </span><span>ස</span><span>රු</span><span>සාර</span><span> </span><span>වෙයි</span><span>.</span><span> </span><span>ව</span><span>ේ</span><span>ස</span><span>ා</span><span>ක්</span><span> </span><span>ප</span><span>ෝ</span><span>ය</span><span> </span><span>නිමි</span><span>තින්</span><span> </span><span>ස</span><span>ි</span><span>ය</span><span>ලුම</span><span> </span><span>ව</span><span>ා</span><span>සනාවන්</span><span> </span><span>ලැබෙන්න</span><span> </span><span>කියා</span><span> </span><span>සුභ</span><span> </span><span>පැතුම්</span><span>!</span>
+</h2>
+<p>Digital Wishes From The IT Department</p>
+
+<div class="button-container">
+  <button id="playButton" onclick="toggleAudio()"></button>
+  <button onclick="window.location.href='next_page.html'">Second Page</button>
+  <button onclick="window.location.href='third_page.html'">Third Page</button>
+</div>
+
+<script>
+  var audio = document.getElementById('backgroundAudio');
+  var playButton = document.getElementById('playButton');
+
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+      playButton.classList.add('pause');
+    } else {
+      audio.pause();
+      playButton.classList.remove('pause');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    audio.play().catch(error => {
+      console.log('Audio autoplay was prevented:', error);
+    });
+  });
+</script>
+
+</body>
+</html>
